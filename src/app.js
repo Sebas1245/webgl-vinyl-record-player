@@ -1,5 +1,6 @@
 import {
     BoxGeometry,
+    Color,
     Mesh,
     MeshBasicMaterial,
     PerspectiveCamera, 
@@ -13,14 +14,15 @@ function main() {
     if ( WebGL.isWebGLAvailable() ) {
         // basic setup of the scene, camera and renderer to append it to the DOM
         const scene = new Scene();
+        const sceneBackgroundColor = new Color( 0xFFFFFF );
+        scene.background = sceneBackgroundColor;
         const camera = new PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
-        console.log('Hello')
         const renderer = new WebGLRenderer();
         renderer.setSize( window.innerWidth, window.innerHeight );
         document.body.appendChild( renderer.domElement );
 
         const geometry = new BoxGeometry( 1, 1, 1 );
-        const material = new MeshBasicMaterial( { color: 0x00ff00 } );
+        const material = new MeshBasicMaterial( { color: 0xF25278 } );
         const cube = new Mesh( geometry, material );
         scene.add( cube );
 

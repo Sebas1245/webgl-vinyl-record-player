@@ -1,25 +1,35 @@
 const path = require('path')
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   mode: 'production',
   entry: './src/app.js',
   output: {
-    path: path.resolve(__dirname, 'public'),
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/dist/',
     filename: 'bundle.js',
+    clean: true,
   },
   performance: {
     maxEntrypointSize: 1024000,
     maxAssetSize: 1024000
   },
-//   TODO: Fix webpack dev server
+  plugins: [
+    new CopyWebpackPlugin({
+        patterns: [
+            { from: 'static' }
+        ]
+    }),
+  ],
+  devtool: 'inline-source-map',
   devServer: {
     static: {
-        directory: path.join(__dirname, 'public'),
+        directory: path.join(__dirname, 'dist'),
     },
     compress: true,
     port: 9000,
     devMiddleware: {
-        publicPath: '/public/',
+        publicPath: '/',
     },
   },
 }

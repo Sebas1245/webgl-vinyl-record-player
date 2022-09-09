@@ -2,10 +2,10 @@
   "name": "webgl-vinyl-record-player",
   "version": "1.0.0",
   "description": "Computer Graphics project using WebGL to display a vinyl record player.",
-  "main": "src/app.js",
+  "private": true,
   "scripts": {
     "build": "webpack --config webpack.config.js",
-    "start": "webpack-dev-server --mode development"
+    "start": "webpack serve --open --mode development"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
     "three": "^0.144.0"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
     "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.11.0"
