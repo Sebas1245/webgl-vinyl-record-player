@@ -35,6 +35,7 @@ function main() {
             return legMesh;
         }
 
+        // tabletop structure
         const tableTopGeometry = new BoxGeometry(9.5, 0.75, 7);
         const tableTopMaterial = new MeshBasicMaterial({color: 'black'})
         const tableTopMesh = new Mesh(tableTopGeometry, tableTopMaterial);
@@ -42,12 +43,14 @@ function main() {
         tableTopMesh.position.z = 0;
         tableTopMesh.position.y = 6;
 
+        // add legs and tabletop to scene
         scene.add(leg(0, 0, 0));
         scene.add(leg(8, 0, 0));
         scene.add(leg(0, 0, -8));
         scene.add(leg(8, 0, -8));
         scene.add(tableTopMesh);
 
+        // camera setup
         camera.position.z = 35;
         camera.position.y = 20;
         camera.position.x = 10;
