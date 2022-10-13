@@ -1,8 +1,8 @@
 import { createCamera } from './components/camera.js';
-import { createCube } from './components/cube.js';
+import { createTable } from './components/table.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
-import { createDisc } from './components/disc.js';
+import { createDisk } from './components/disk.js';
 
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
@@ -18,11 +18,11 @@ class World {
     renderer = createRenderer();
     container.append(renderer.domElement);
 
-    const cube = createCube();
-    const disc = createDisc();
+    const table = createTable();
+    const disk = createDisk();
     const light = createLights();
 
-    scene.add(disc, cube, light);
+    scene.add(disk, table, light);
 
     const resizer = new Resizer(container, camera, renderer);
   }
