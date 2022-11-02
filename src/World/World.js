@@ -8,6 +8,7 @@ import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { createAudio } from './systems/audio.js';
 import { createListener } from './systems/listener.js';
+import { Loop } from './systems/Loop.js';
 
 import { playAudio } from './actions/playAudio.js'
 
@@ -16,12 +17,14 @@ let camera;
 let renderer;
 let listener;
 let audio;
+let loop;
 
 class World {
   constructor(container) {
     camera = createCamera();
     scene = createScene();
     renderer = createRenderer();
+    loop = new Loop(camera, scene, renderer)
     listener = createListener();
     audio = createAudio( listener );
     camera.add( listener ); // for audio to play
@@ -33,17 +36,25 @@ class World {
     const disk = createDisk();
     const light = createLights();
 
+    // Animate disk
+    loop.updatables.push(disk);
+
     scene.add(disk, table, light);
 
     const resizer = new Resizer(container, camera, renderer);
-    resizer.onResize = () => {
-      this.render();
-    };
   }
 
   render() {
     // draw a single frame
     renderer.render(scene, camera);
+  }
+
+  start() {
+    loop.start();
+  }
+
+  stop() {
+    loop.stop();
   }
 }
 
