@@ -18,6 +18,13 @@ function createDisk() {
 
     disk.add(inner_circle);
 
+    disk.tick = () => {
+        // increase the disk's rotation each frame
+        disk.rotation.z += 0.01;
+        // disk.rotation.x += 0.01;
+        // disk.rotation.y += 0.01;
+      }
+
     return disk;
 }
 
