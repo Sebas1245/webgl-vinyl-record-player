@@ -26,8 +26,15 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
+      {
+        test: /\.(ogg|mp3)$/i,
+        type: 'asset',
+      },
+
     ] 
   },
   devtool: 'inline-source-map',
-
+  devServer: {
+    static: './dist',
+  },
 }
