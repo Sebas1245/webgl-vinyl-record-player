@@ -3,10 +3,13 @@ import {
     Mesh,
     MeshStandardMaterial
  } from "three";
+import { createMaterial } from "../actions/createMaterial";
+import VinylTextureSrc from '../textures/vinyl-texture-2.jpeg';
+
 
 function createDisk() {
     const disk_geometry = new CircleGeometry(0.80, 32);
-    const disk_material = new MeshStandardMaterial( {color: "black"} );
+    const disk_material = createMaterial(VinylTextureSrc);
     const disk = new Mesh(disk_geometry, disk_material);
 
     disk.position.set(-0.1, 0.5, 1);

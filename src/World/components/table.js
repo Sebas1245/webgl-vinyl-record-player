@@ -1,28 +1,13 @@
-import { BoxBufferGeometry, CubeCamera, Mesh, MeshStandardMaterial, TextureLoader } from 'three';
+import { BoxBufferGeometry, Mesh } from 'three';
+import { createMaterial } from '../actions/createMaterial';
+// TODO: Change the lighting on the table to improve the way the texture is seen
 import CedarWoodTexture from '../textures/cedar-wood-texture.jpeg';
 
-
-function createMaterial() {
-  // create a texture loader.
-  const textureLoader = new TextureLoader();
-
-  // load a texture
-  const texture = textureLoader.load(
-    CedarWoodTexture,
-  );
-
-  // create a "standard" material
-  const material = new MeshStandardMaterial({ 
-    map: texture
-  });
-  
-  return material;
-  }
 
 function createTable() {
   const geometry = new BoxBufferGeometry(2, 2, 2);
 
-  const material = createMaterial();
+  const material = createMaterial(CedarWoodTexture);
 
   const table = new Mesh(geometry, material);
 

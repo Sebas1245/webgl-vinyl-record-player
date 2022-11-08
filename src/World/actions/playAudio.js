@@ -1,6 +1,5 @@
 import ProjectUtopia from '../sounds/Project_Utopia.ogg'
 function playAudio ( audio ) {
-    console.log(ProjectUtopia);
     const sound = audio[0];
     const audioLoader = audio[1];
     audioLoader.load( ProjectUtopia , function( buffer ) {
