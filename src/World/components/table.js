@@ -1,11 +1,28 @@
-import { BoxBufferGeometry, CubeCamera, Mesh, MeshStandardMaterial } from 'three';
+import { BoxBufferGeometry, CubeCamera, Mesh, MeshStandardMaterial, TextureLoader } from 'three';
+import CedarWoodTexture from '../textures/cedar-wood-texture.jpeg';
+
+
+function createMaterial() {
+  // create a texture loader.
+  const textureLoader = new TextureLoader();
+
+  // load a texture
+  const texture = textureLoader.load(
+    CedarWoodTexture,
+  );
+
+  // create a "standard" material
+  const material = new MeshStandardMaterial({ 
+    map: texture
+  });
+  
+  return material;
+  }
 
 function createTable() {
   const geometry = new BoxBufferGeometry(2, 2, 2);
 
-  // Switch the old "basic" material to
-  // a physically correct "standard" material
-  const material = new MeshStandardMaterial({ color: 'brown' });
+  const material = createMaterial();
 
   const table = new Mesh(geometry, material);
 
