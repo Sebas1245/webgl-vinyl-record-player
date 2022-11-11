@@ -2,11 +2,10 @@ const path = require('path')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: './src/main.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/dist/',
     filename: 'bundle.js',
     clean: true,
   },
@@ -16,20 +15,26 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin({
-        patterns: [
-            { from: 'static' }
-        ]
-    }),
+      patterns: [
+          { from: 'static' }
+      ]
+    })
   ],
+  module: {
+    rules: [
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(ogg|mp3)$/i,
+        type: 'asset',
+      },
+
+    ] 
+  },
   devtool: 'inline-source-map',
   devServer: {
-    static: {
-        directory: path.join(__dirname, 'dist'),
-    },
-    compress: true,
-    port: 9000,
-    devMiddleware: {
-        publicPath: '/',
-    },
+    static: './dist',
   },
 }
