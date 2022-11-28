@@ -3,6 +3,7 @@ import { createTable } from './components/table.js';
 import { createLights } from './components/lights.js';
 import { createScene } from './components/scene.js';
 import { createDisk } from './components/disk.js';
+import { createFloor} from './components/floor.js';
 
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
@@ -35,11 +36,12 @@ class World {
     const table = createTable();
     const disk = createDisk();
     const light = createLights();
+    const floor = createFloor();
 
     // Animate disk
     loop.updatables.push(disk);
 
-    scene.add(disk, table, light);
+    scene.add(disk, table, light, floor);
 
     const resizer = new Resizer(container, camera, renderer);
   }
