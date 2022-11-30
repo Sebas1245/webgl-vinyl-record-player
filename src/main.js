@@ -17,6 +17,10 @@ function main() {
     const warning = WebGL.getWebGLErrorMessage();
     document.getElementById( 'scene-container' ).appendChild( warning );
   }
+  const ext = gl.getExtension('WEBGL_depth_texture');
+  if(!ext){
+    return alert('need WEBGL_depth_texture');
+  }
 }
 
 main();

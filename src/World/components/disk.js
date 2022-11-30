@@ -27,7 +27,6 @@ function createDisk() {
         // disk.rotation.x += 0.01;
         // disk.rotation.y += 0.01;
       }
-
     return disk;
 }
 

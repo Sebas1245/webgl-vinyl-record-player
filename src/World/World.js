@@ -5,6 +5,7 @@ import { createScene } from './components/scene.js';
 import { createDisk } from './components/disk.js';
 import { createFloor} from './components/floor.js';
 
+
 import { createRenderer } from './systems/renderer.js';
 import { Resizer } from './systems/Resizer.js';
 import { createAudio } from './systems/audio.js';
@@ -37,6 +38,7 @@ class World {
     const disk = createDisk();
     const light = createLights();
     const floor = createFloor();
+   
 
     // Animate disk
     loop.updatables.push(disk);
