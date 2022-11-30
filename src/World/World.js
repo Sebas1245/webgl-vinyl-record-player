@@ -47,6 +47,7 @@ class World {
     scene.add(disk, table, light, floor);
 
     const resizer = new Resizer(container, camera, renderer);
+
   }
 
   render() {

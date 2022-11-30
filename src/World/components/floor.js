@@ -1,6 +1,5 @@
 import { BoxBufferGeometry, Mesh, Texture } from 'three';
 import { createMaterial } from '../actions/createMaterial';
-// TODO: Change the lighting on the floor to improve the way the texture is seen
 import maderaTexture from '../textures/madera-texture.jpg';
 
 
