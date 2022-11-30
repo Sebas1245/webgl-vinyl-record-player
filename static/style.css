@@ -33,4 +33,29 @@ body {
     */
     background-color: skyblue;
   }
+
+  #start-song-btn {
+    border-radius: 12px;
+    background-color: #444;
+    color: #f9f9f9;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 1%;
+  }
+  
+  #pause-song-btn {
+    border-radius: 12px;
+    background-color: #444;
+    color: #f9f9f9;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    padding: 1%;
+    display: none;
+  }
   

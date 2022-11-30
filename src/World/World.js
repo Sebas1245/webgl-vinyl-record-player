@@ -12,13 +12,13 @@ import { createAudio } from './systems/audio.js';
 import { createListener } from './systems/listener.js';
 import { Loop } from './systems/Loop.js';
 
-import { playAudio } from './actions/playAudio.js'
+import ProjectUtopia from './sounds/Project_Utopia.ogg';
+
 
 let scene;
 let camera;
 let renderer;
 let listener;
-let audio;
 let loop;
 
 class World {
@@ -26,11 +26,9 @@ class World {
     camera = createCamera();
     scene = createScene();
     renderer = createRenderer();
-    loop = new Loop(camera, scene, renderer)
     listener = createListener();
-    audio = createAudio( listener );
-    camera.add( listener ); // for audio to play
-    playAudio( audio );
+
+    loop = new Loop(camera, scene, renderer)
     
     container.append( renderer.domElement );
 
@@ -43,6 +41,9 @@ class World {
     // Animate disk
     loop.updatables.push(disk);
 
+    // initialize audio 
+    this.initAudio();
+
     scene.add(disk, table, light, floor);
 
     const resizer = new Resizer(container, camera, renderer);
@@ -53,12 +54,32 @@ class World {
     renderer.render(scene, camera);
   }
 
-  start() {
+  startAnimation() {
     loop.start();
   }
 
-  stop() {
+  stopAnimation() {
     loop.stop();
+  }
+
+  initAudio() {
+    this.audio = createAudio( listener );
+    camera.add( listener ); // for audio to play
+    this.sound = this.audio[0];
+    const audioLoader = this.audio[1];
+    audioLoader.load( ProjectUtopia , ( buffer ) => {
+      this.sound.setBuffer( buffer );
+      this.sound.setLoop( true );
+      this.sound.setVolume( 0.5 );
+    });
+  }
+
+  playAudio() {
+    this.sound.play();
+  }
+
+  pauseAudio() {
+    this.sound.pause();
   }
 }
 
